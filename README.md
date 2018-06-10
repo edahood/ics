@@ -10,14 +10,14 @@ The [iCalendar](http://tools.ietf.org/html/rfc5545) generator
 
 ## Install
 
-`npm install -S ics`
+`npm install -S ics-plus`
 
 ## Example Usage
 
 1) Create an iCalendar event:
 
 ```javascript
-const ics = require('ics')
+const ics = require('ics-plus')
 
 const event = {
   start: [2018, 5, 30, 6, 30],
@@ -73,7 +73,7 @@ ics.createEvent(event, (error, value) => {
 2) Write an iCalendar file:
 ```javascript
 const { writeFileSync } = require('fs')
-const ics = require('ics')
+const ics = require('ics-plus')
 
 ics.createEvent({
   title: 'Dinner',
@@ -91,7 +91,7 @@ ics.createEvent({
 
 3) Create multiple iCalendar events:
 ```javascript
-const ics = require('./dist')
+const ics = require('ics-plus')
 
 const { error, value } = ics.createEvents([
   {
@@ -130,7 +130,7 @@ console.log(value)
 
 4) Create iCalendar events with Audio (Mac):
 ```'use strict';
-let ics = require("ics")
+let ics = require("ics-plus")
 let moment = require("moment")
 let events = []
 let alarms = []
@@ -186,6 +186,12 @@ console.log(ics.createEvents(events))
 ```
 ## API
 
+### `createCalendar({productId, events=[]})`
+Generates an iCalendar instance setting productId and initializing the events.
+Return iCalendar instance.
+ICalendar instance has .toIcs(), .toString(), .addEvent(attributes={}), .addEvents(events=[])
+
+
 ### `createEvent(attributes[, callback])`
 
 Generates an iCal-compliant VCALENDAR string with one VEVENT.
@@ -232,8 +238,8 @@ const eventAttributes = {
 
 #### `callback`
 
-Optional. 
-Node-style callback. 
+Optional.
+Node-style callback.
 
 ```javascript
 function (err, value) {
@@ -261,7 +267,7 @@ Array of `attributes` objects (as described in `createEvent`).
 
 #### `callback`
 
-Optional. 
+Optional.
 Node-style callback.
 
 ```javascript

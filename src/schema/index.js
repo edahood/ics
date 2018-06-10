@@ -42,7 +42,23 @@ const alarmSchema = Joi.object().keys({
   'x-prop': Joi.any(),
   'iana-prop': Joi.any()
 })
-
+const ruleSchema = Joi.object().keys({
+   freq: Joi.number(),
+   dtstart: dateTimeSchema,
+   interval: Joi.number(),
+    wkst: Joi.number().min(0).max(6),
+    count: Joi.number().min(0),
+    until: dateTimeSchema,
+    bysetpos: Joi.number(),
+    bymonth: Joi.number(),
+    bymonthday: Joi.number(),
+    byyearday: Joi.number(),
+    byweekno: Joi.number(),
+    byweekday: Joi.number(),
+    byhour: Joi.number(),
+    byminute: Joi.number(),
+    bysecond: Joi.number()
+})
 const schema = Joi.object().keys({
   timestamp: Joi.any(),
   title: Joi.string(),
@@ -58,6 +74,7 @@ const schema = Joi.object().keys({
   location: Joi.string(),
   status: Joi.string().regex(/TENTATIVE|CANCELLED|CONFIRMED/),
   categories: Joi.array().items(Joi.string()),
+  rrule: ruleSchema,
   organizer: organizerSchema,
   attendees: Joi.array().items(contactSchema),
   alarms: Joi.array().items(alarmSchema)

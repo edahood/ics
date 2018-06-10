@@ -4,6 +4,8 @@ import {
   validateEvent,
   formatEvent
 } from './pipeline'
+import ICalendar from './ICalendar';
+import ICalendarEvent from './ICalendarEvent';
 
 function assignUniqueId(event) {
   event.uid = event.uid || uuid()
@@ -72,7 +74,7 @@ export function createEvent (attributes, cb) {
 
   // Return a node-style callback
   const { error, value } = validateEvent(buildEvent(attributes))
-  
+
   if (error) return cb(error)
 
   return cb(null, formatEvent(value))
@@ -93,4 +95,9 @@ export function createEvents (events, cb) {
   }
 
   return cb(error, value)
+}
+
+export function createCalendar ({productId, events=[]}) {
+  let cal = new ICalendar({productId, events});
+  return cal;
 }
