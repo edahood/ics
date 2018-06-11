@@ -1,12 +1,12 @@
 {
   "name": "ics-plus",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "iCal (ics) file generator with RRule support. Based on https://github.com/adamgibbons/ics",
   "main": "index.js",
   "scripts": {
     "start": "mocha --compilers js:babel-core/register --watch --recursive",
     "test": "mocha --compilers js:babel-core/register --recursive",
-    "build": "rm -r dist; gulp build"
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
     "mocha": "^3.5.0"
   },
   "dependencies": {
+    "gulp-clean": "^0.4.0",
     "joi": "^10.6.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
