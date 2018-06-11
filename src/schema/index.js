@@ -77,7 +77,8 @@ const schema = Joi.object().keys({
   rrule: ruleSchema,
   organizer: organizerSchema,
   attendees: Joi.array().items(contactSchema),
-  alarms: Joi.array().items(alarmSchema)
+  alarms: Joi.array().items(alarmSchema),
+    htmlDescription: Joi.string()
 }).xor('end', 'duration')
 
 export default function validateEvent(candidate) {

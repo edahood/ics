@@ -81,7 +81,8 @@ var schema = _joi2.default.object().keys({
   rrule: ruleSchema,
   organizer: organizerSchema,
   attendees: _joi2.default.array().items(contactSchema),
-  alarms: _joi2.default.array().items(alarmSchema)
+  alarms: _joi2.default.array().items(alarmSchema),
+  htmlDescription: _joi2.default.string()
 }).xor('end', 'duration');
 
 function validateEvent(candidate) {

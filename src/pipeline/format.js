@@ -32,7 +32,8 @@ const formatSingleEvent = function(attributes = {} ) {
         organizer,
         attendees,
         alarms,
-        rrule
+        rrule,
+        htmlDescription
     } = attributes
     let RuleString;
     if (rrule){
@@ -58,7 +59,8 @@ const formatSingleEvent = function(attributes = {} ) {
     icsFormat += location ? (foldLine(`LOCATION:${formatText(location)}`) + '\r\n') : ''
     icsFormat += status ? (foldLine(`STATUS:${status}`) + '\r\n') : ''
     icsFormat += categories ? (foldLine(`CATEGORIES:${categories}`) + '\r\n') : ''
-    icsFormat += organizer ? (foldLine(`ORGANIZER;${setOrganizer(organizer)}`) + '\r\n') : ''
+    icsFormat += organizer ? (foldLine(`ORGANIZER;${setOrganizer(organizer)}`) + '\r\n') : '';
+    icsFormat += htmlDescription ? (foldLine(`X-ALT-DESC;FMTTYPE=text/html:${htmlDescription}`)) : '';
     if (attendees) {
         attendees.map(function (attendee) {
             icsFormat += foldLine(`ATTENDEE;${setContact(attendee)}`) + '\r\n'
@@ -110,7 +112,8 @@ export default function formatEvent (attributes = {}) {
     organizer,
     attendees,
     alarms,
-    rrule
+    rrule,
+      htmlDescription
   } = attributes
     let RuleString;
     if (rrule){

@@ -32,7 +32,8 @@ var formatSingleEvent = function formatSingleEvent() {
         organizer = attributes.organizer,
         attendees = attributes.attendees,
         alarms = attributes.alarms,
-        rrule = attributes.rrule;
+        rrule = attributes.rrule,
+        htmlDescription = attributes.htmlDescription;
 
     var RuleString = void 0;
     if (rrule) {
@@ -58,6 +59,7 @@ var formatSingleEvent = function formatSingleEvent() {
     icsFormat += status ? (0, _utils.foldLine)('STATUS:' + status) + '\r\n' : '';
     icsFormat += categories ? (0, _utils.foldLine)('CATEGORIES:' + categories) + '\r\n' : '';
     icsFormat += organizer ? (0, _utils.foldLine)('ORGANIZER;' + (0, _utils.setOrganizer)(organizer)) + '\r\n' : '';
+    icsFormat += htmlDescription ? (0, _utils.foldLine)('X-ALT-DESC;FMTTYPE=text/html:' + htmlDescription) : '';
     if (attendees) {
         attendees.map(function (attendee) {
             icsFormat += (0, _utils.foldLine)('ATTENDEE;' + (0, _utils.setContact)(attendee)) + '\r\n';
@@ -111,7 +113,8 @@ function formatEvent() {
         organizer = attributes.organizer,
         attendees = attributes.attendees,
         alarms = attributes.alarms,
-        rrule = attributes.rrule;
+        rrule = attributes.rrule,
+        htmlDescription = attributes.htmlDescription;
 
     var RuleString = void 0;
     if (rrule) {
