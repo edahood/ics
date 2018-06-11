@@ -59,7 +59,7 @@ var formatSingleEvent = function formatSingleEvent() {
     icsFormat += status ? (0, _utils.foldLine)('STATUS:' + status) + '\r\n' : '';
     icsFormat += categories ? (0, _utils.foldLine)('CATEGORIES:' + categories) + '\r\n' : '';
     icsFormat += organizer ? (0, _utils.foldLine)('ORGANIZER;' + (0, _utils.setOrganizer)(organizer)) + '\r\n' : '';
-    icsFormat += htmlDescription ? (0, _utils.foldLine)('X-ALT-DESC;FMTTYPE=text/html:' + htmlDescription) : '';
+    icsFormat += htmlDescription ? (0, _utils.foldLine)('X-ALT-DESC;FMTTYPE=text/html:' + htmlDescription) + '\r\n' : '';
     if (attendees) {
         attendees.map(function (attendee) {
             icsFormat += (0, _utils.foldLine)('ATTENDEE;' + (0, _utils.setContact)(attendee)) + '\r\n';
