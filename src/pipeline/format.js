@@ -60,7 +60,7 @@ const formatSingleEvent = function(attributes = {} ) {
     icsFormat += status ? (foldLine(`STATUS:${status}`) + '\r\n') : ''
     icsFormat += categories ? (foldLine(`CATEGORIES:${categories}`) + '\r\n') : ''
     icsFormat += organizer ? (foldLine(`ORGANIZER;${setOrganizer(organizer)}`) + '\r\n') : '';
-    icsFormat += htmlDescription ? (foldLine(`X-ALT-DESC;FMTTYPE=text/html:${htmlDescription}`)) : '';
+    icsFormat += htmlDescription ? (foldLine(`X-ALT-DESC;FMTTYPE=text/html:${htmlDescription}`) + '\r\n') : '';
     if (attendees) {
         attendees.map(function (attendee) {
             icsFormat += foldLine(`ATTENDEE;${setContact(attendee)}`) + '\r\n'

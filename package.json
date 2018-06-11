@@ -1,6 +1,6 @@
 {
   "name": "ics-plus",
-  "version": "2.7.4",
+  "version": "2.7.5",
   "description": "iCal (ics) file generator with RRule support. Based on https://github.com/adamgibbons/ics",
   "main": "index.js",
   "scripts": {
