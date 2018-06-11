@@ -9,7 +9,8 @@ import setDescription from './set-description'
 import setSummary from './set-summary'
 import formatDuration from './format-duration'
 import foldLine from './fold-line'
-
+import formatText from './format-text';
+import setCategories from './set-categories'
 export {
   setDate,
   setDateWithUTCtime,
@@ -21,5 +22,7 @@ export {
   formatDuration,
   setSummary,
   setDescription,
-  foldLine
+  foldLine,
+    formatText,
+    setCategories
 }

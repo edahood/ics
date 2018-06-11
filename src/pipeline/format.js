@@ -7,7 +7,9 @@ import {
     setSummary,
     setGeolocation,
     formatDuration,
-    foldLine
+    foldLine,
+    formatText,
+    setCategories
 } from '../utils'
 import {RRule} from 'rrule';
 
@@ -53,7 +55,7 @@ const formatSingleEvent = function(attributes = {} ) {
     icsFormat += RuleString ? `RRULE:${RuleString}\r\n` : '';
     icsFormat += url ? (foldLine(`URL:${url}`) + '\r\n') : ''
     icsFormat += geo ? (foldLine(`GEO:${setGeolocation(geo)}`) + '\r\n') : ''
-    icsFormat += location ? (foldLine(`LOCATION:${location}`) + '\r\n') : ''
+    icsFormat += location ? (foldLine(`LOCATION:${formatText(location)}`) + '\r\n') : ''
     icsFormat += status ? (foldLine(`STATUS:${status}`) + '\r\n') : ''
     icsFormat += categories ? (foldLine(`CATEGORIES:${categories}`) + '\r\n') : ''
     icsFormat += organizer ? (foldLine(`ORGANIZER;${setOrganizer(organizer)}`) + '\r\n') : ''
