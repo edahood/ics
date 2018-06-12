@@ -23,6 +23,10 @@ const contactSchema = Joi.object().keys({
   email: Joi.string().email(),
   rsvp: Joi.boolean()
 })
+const relatedToSchema = Joi.object().keys({
+    relType: Joi.string().regex(/CHILD|PARENT|SIBLING|DEPENDS-ON|FINISHTOSTART|FINISHTOFINISH|STARTTOFINISH|STARTTOSTART/),
+    uid: Joi.string().required()
+})
 
 const organizerSchema = Joi.object().keys({
   name: Joi.string(),
@@ -77,6 +81,7 @@ const schema = Joi.object().keys({
   rrule: ruleSchema,
   organizer: organizerSchema,
   attendees: Joi.array().items(contactSchema),
+  relatedTo: Joi.array().items(relatedToSchema),
   alarms: Joi.array().items(alarmSchema),
     htmlDescription: Joi.string()
 }).xor('end', 'duration')

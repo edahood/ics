@@ -19,7 +19,8 @@ export default function buildEvent (attributes = {}) {
     organizer,
     attendees,
     alarms,
-    rrule
+    rrule,
+      relatedTo,
   } = attributes
 
   // fill in default values where necessary

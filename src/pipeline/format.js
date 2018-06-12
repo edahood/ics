@@ -33,7 +33,8 @@ const formatSingleEvent = function(attributes = {} ) {
         attendees,
         alarms,
         rrule,
-        htmlDescription
+        htmlDescription,
+        relatedTo
     } = attributes
     let RuleString;
     if (rrule){
@@ -69,6 +70,11 @@ const formatSingleEvent = function(attributes = {} ) {
     if (alarms) {
         alarms.map(function (alarm) {
             icsFormat += setAlarm(alarm)
+        })
+    }
+    if (relatedTo) {
+        relatedTo.map((related) => {
+            icsFormat += foldLine(`RELATED-TO;RELTYPE=${related.relType || 'PARENT'}:${related.uid}`) + '\r\n';
         })
     }
     icsFormat += duration ? `DURATION:${formatDuration(duration)}\r\n` : ''
@@ -113,6 +119,7 @@ export default function formatEvent (attributes = {}) {
     attendees,
     alarms,
     rrule,
+      relatedTo,
       htmlDescription
   } = attributes
     let RuleString;
