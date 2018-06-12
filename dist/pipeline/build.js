@@ -33,7 +33,8 @@ function buildEvent() {
       organizer = attributes.organizer,
       attendees = attributes.attendees,
       alarms = attributes.alarms,
-      rrule = attributes.rrule;
+      rrule = attributes.rrule,
+      relatedTo = attributes.relatedTo;
 
   // fill in default values where necessary
 

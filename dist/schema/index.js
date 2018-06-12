@@ -27,6 +27,10 @@ var contactSchema = _joi2.default.object().keys({
   email: _joi2.default.string().email(),
   rsvp: _joi2.default.boolean()
 });
+var relatedToSchema = _joi2.default.object().keys({
+  relType: _joi2.default.string().regex(/CHILD|PARENT|SIBLING|DEPENDS-ON|FINISHTOSTART|FINISHTOFINISH|STARTTOFINISH|STARTTOSTART/),
+  uid: _joi2.default.string().required()
+});
 
 var organizerSchema = _joi2.default.object().keys({
   name: _joi2.default.string(),
@@ -81,6 +85,7 @@ var schema = _joi2.default.object().keys({
   rrule: ruleSchema,
   organizer: organizerSchema,
   attendees: _joi2.default.array().items(contactSchema),
+  relatedTo: _joi2.default.array().items(relatedToSchema),
   alarms: _joi2.default.array().items(alarmSchema),
   htmlDescription: _joi2.default.string()
 }).xor('end', 'duration');

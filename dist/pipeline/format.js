@@ -33,7 +33,8 @@ var formatSingleEvent = function formatSingleEvent() {
         attendees = attributes.attendees,
         alarms = attributes.alarms,
         rrule = attributes.rrule,
-        htmlDescription = attributes.htmlDescription;
+        htmlDescription = attributes.htmlDescription,
+        relatedTo = attributes.relatedTo;
 
     var RuleString = void 0;
     if (rrule) {
@@ -68,6 +69,11 @@ var formatSingleEvent = function formatSingleEvent() {
     if (alarms) {
         alarms.map(function (alarm) {
             icsFormat += (0, _utils.setAlarm)(alarm);
+        });
+    }
+    if (relatedTo) {
+        relatedTo.map(function (related) {
+            icsFormat += (0, _utils.foldLine)('RELATED-TO;RELTYPE=' + (related.relType || 'PARENT') + ':' + related.uid) + '\r\n';
         });
     }
     icsFormat += duration ? 'DURATION:' + (0, _utils.formatDuration)(duration) + '\r\n' : '';
@@ -114,6 +120,7 @@ function formatEvent() {
         attendees = attributes.attendees,
         alarms = attributes.alarms,
         rrule = attributes.rrule,
+        relatedTo = attributes.relatedTo,
         htmlDescription = attributes.htmlDescription;
 
     var RuleString = void 0;
